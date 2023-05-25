@@ -3,7 +3,7 @@ const cors = require('cors');
 const app = express();
 const port = 8080
 const corsOptions = {
-    origin: 'localhost:8080'
+    origin: 'http://localhost:3000'
 };
 app.use(cors(corsOptions));
 app.use(express.json());
@@ -25,10 +25,14 @@ db.sequelize.sync()
 //Routes method
 const bio = require('./controller/bio-controller')
 // app.get('/', (req, res) => {
-//     bio.show(req, res);
+//     res.json({
+//         message: "basic example"
+//     })
 // })
+app.get('/', (req, res) => {
+    console.log('hello world')
+})
 app.post('/', (req, res) => {
     bio.create(req, res);
-})
-module.exports = db;
+});
 

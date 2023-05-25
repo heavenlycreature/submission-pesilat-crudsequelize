@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const sequelize = new Sequelize(
-    'biodata_db',
+    'belajarmysql',
     'root',
     '',
     {
@@ -8,9 +8,10 @@ const sequelize = new Sequelize(
         dialect: 'mysql'
     }
 );
-const model = {};
+const db = {};
 
-model.Sequelize = Sequelize;
-model.sequelize = sequelize;
-model.bio = require('./bio-model.js')(sequelize, Sequelize);
-module.exports = model;
+db.Sequelize = Sequelize;
+db.sequelize = sequelize;
+db.bio = require('./bio-model')(sequelize, Sequelize);
+
+module.exports = db;

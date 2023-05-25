@@ -1,6 +1,6 @@
-const db = require('../server')
+const db = require('../model')
 const Bio = db.bio;
-// const op = db.Sequelize.op;
+const Op = db.Sequelize.Op;
 
 //create table
 exports.create = (req, res) => {
@@ -14,9 +14,9 @@ exports.create = (req, res) => {
     //create bio object
     const bio = {
         nama: req.body.nama,
-        TempatLahir: req.body.tempatLahir,
-        TanggalLahir: req.body.tanggalLahir,
-        Alamat: req.body.Alamat,
+        tempatLahir: req.body.tempatLahir,
+        tanggalLahir: req.body.tanggalLahir,
+        alamat: req.body.alamat,
     }
     //saving data
     Bio.create(bio)

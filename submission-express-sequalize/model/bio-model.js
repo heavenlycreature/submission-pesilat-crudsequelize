@@ -1,40 +1,23 @@
-const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = new Sequelize(
-    'belajarmysql',
-    'root',
-    '',
-    {
-        host: 'localhost',
-        dialect: 'mysql'
-    }
-);
+const Sequelize = require('sequelize');
 
 module.exports = (sequelize, Sequelize) => {
-    const model = sequelize.define('biodata',
+    const bio = sequelize.define('biodata',
         {
             nama: {
-                type: DataTypes.STRING,
+                type: Sequelize.STRING,
                 allowNull: false
             },
             tempatLahir: {
-                type: DataTypes.STRING,
+                type: Sequelize.STRING,
                 allowNull: false
             },
             tanggalLahir: {
-                type: DataTypes.DATEONLY,
+                type: Sequelize.DATEONLY,
                 allowNull: false
             },
             alamat: {
-                type: DataTypes.STRING
+                type: Sequelize.STRING
             }
-        }, {
-        freezeTableName: true
-    })
-    return model;
+        })
+    return bio;
 }
-sequelize.authenticate()
-    .then(() => console.log(`Database terkoneksi!`))
-    .catch(err => console.log(`Database tidak terkoneksi ${err}`))
-sequelize.sync()
-    .then(() => console.log('Table was created!'))
-    .catch(err => console.log(`can't create table! ${err}`))
