@@ -28,11 +28,49 @@ exports.create = (req, res) => {
         });
 };
 //showing the data
-const show = (req, res) => {
-
+exports.show = (req, res) => {
+    if (!db) {
+        res.status(400).send({
+            message: 'Data kosong!'
+        });
+        return;
+    }
+    //getting biodata
+    const bio = {
+        nama: req.params.nama,
+        tempatLahir: req.params.tempatLahir,
+        tanggalLahir: req.params.tanggalLahir,
+        alamat: req.params.alamat,
+    }
+    //show bio
+    Bio.findAll(bio)
+        .then(data => res.send(data))
+        .catch(err => {
+            res.status(500).send({
+                message: 'Error tidak dapat menampilkan data'
+            })
+        })
 }
 //deleting the book
-const deleting = (req, res) => {
-
+exports.deleting = (req, res) => {
+    if (!db) {
+        res.status(400).send({
+            message: 'Data kosong!'
+        });
+        return;
+    }
+    //getting biodata
+    const bio = {
+        where: {
+            id: req.params.id
+        }
+    }
+    //show bio
+    Bio.destroy(bio)
+        .then(data => res.send(data))
+        .catch(err => {
+            res.status(500).send({
+                message: 'Error tidak dapat menghapus data'
+            })
+        })
 }
-// module.exports = { create, show, deleting };

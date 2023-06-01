@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const port = 8080
+const port = 8080;
 const corsOptions = {
     origin: 'http://localhost:3000'
 };
@@ -30,9 +30,13 @@ const bio = require('./controller/bio-controller')
 //     })
 // })
 app.get('/', (req, res) => {
-    console.log('hello world')
+    bio.show(req, res);
 })
-app.post('/', (req, res) => {
+app.post('/write', (req, res) => {
     bio.create(req, res);
 });
+
+app.delete('/erase', (req, res) => {
+    bio.deleting(req, res);
+})
 

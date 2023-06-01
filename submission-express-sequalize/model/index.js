@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const sequelize = new Sequelize(
-    'belajarmysql',
+    'biodata_db',
     'root',
     '',
     {
