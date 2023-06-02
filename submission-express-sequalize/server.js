@@ -36,7 +36,9 @@ app.post('/write', (req, res) => {
     bio.create(req, res);
 });
 
-app.delete('/erase', (req, res) => {
+app.delete('/:id', (req, res) => {
     bio.deleting(req, res);
 })
-
+app.put('/:id', (req, res) => {
+    bio.update(req, res);
+})
